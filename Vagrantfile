@@ -26,5 +26,5 @@ Vagrant.configure("2") do |config|
   config.vm.provision "bootstrap", type: "shell", path: "bootstrap-rhel.sh"
   config.vm.provision :reload
   config.vm.provision "index.html", type: "file", source: "index.html", destination: "/tmp/index.html"
-  config.vm.provision "nginx-setup", type: "shell", path: "nginx-setup-rhel.sh", run: "never"
+  config.vm.provision "nginx-setup", type: "shell", path: "nginx-setup-rhel.sh"
 end

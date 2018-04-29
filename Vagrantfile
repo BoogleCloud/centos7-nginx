@@ -19,12 +19,13 @@ Vagrant.configure("2") do |config|
     h.differencing_disk = true
     h.vlan_id = 5
     h.cpus = 2
-    h.memory = 1024
+    h.memory = 512
+    h.maxmemory = 2048
   end
 
   config.vm.provision "resources", type: "file", source: "resources", destination: "/tmp/resources"
-  config.vm.provision "bootstrap", type: "shell", path: "bootstrap-rhel.sh"
+  config.vm.provision "bootstrap", type: "shell", path: "bootstrap.sh"
   config.vm.provision :reload
-  config.vm.provision "index.html", type: "file", source: "index.html", destination: "/tmp/index.html"
+  config.vm.provision "nginx-files", type: "file", source: "nginx", destination: "/tmp/nginx"
   config.vm.provision "nginx-setup", type: "shell", path: "nginx-setup-rhel.sh"
 end

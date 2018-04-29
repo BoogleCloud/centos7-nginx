@@ -34,3 +34,6 @@ firewall-cmd --runtime-to-permanent
 #certbot --nginx -d boogle.cloud -d www.boogle.cloud
 # Then restart nginx to use the new key
 #systemctl restart nginx
+
+# Auto renew every two months by adding this to root crontab
+# 0 3 28 2,4,6,8,10,12 * /usr/bin/certbot renew --quiet
